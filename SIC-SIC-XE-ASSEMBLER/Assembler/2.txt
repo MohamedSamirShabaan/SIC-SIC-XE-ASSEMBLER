@@ -1,0 +1,27 @@
+.       ..     ...                ..
+PROG     start   0
+FIRST    LDA     #0
+         J       CONT
+.Text record should be broken here!
+BUF      RESW    10
+.ERROR! Undefined symbol
+TEMP     EQU     BLABLA
+TEN      EQU     10
+.general expression = (60)dec = (3A)hex. OR ERROR! if general expression not supported
+SIXTY    WORD    12+TEN*5-7/3
+.literal (hex) or ERROR! if literals are not supported
+CONT     LDT     =X'ABCDEF'
+.literal (hex) or ERROR! if literals are not supported
+         LDS     =C'ABC'
+         J       *
+............. Rest of Data ..............
+.LTORG statement or WARNING if not supported
+         LTORG
+LBL1     WORD    7
+.ORG statment
+         ORG     LBL1
+LBL1BKUP RESW    1
+LBL2     WORD    30
+LBL3     WORD    60
+BUF2     RESB    12
+         END     prog
